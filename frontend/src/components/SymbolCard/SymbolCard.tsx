@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './symbolCard.css';
 import { ReactComponent as CompanyIcon } from '@/assets/company.svg';
 import { useAppSelector } from '@/hooks/redux';
@@ -30,4 +31,4 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
     </div>
   );
 };
-export default SymbolCard;
+export default memo(SymbolCard);
