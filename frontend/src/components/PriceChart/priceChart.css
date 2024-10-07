@@ -1,11 +1,12 @@
 .priceChart {
   width: 400px;
+  min-height: 250px;
 }
 .priceChart__title {
   text-transform: uppercase;
 }
 .priceChart__inner {
-  height: 300px;
+  height: 250px;
   display: flex;
 }
 @media (max-width: 1023px) {
@@ -13,11 +14,11 @@
     width: 100%;
   }
   .priceChart__inner {
-    height: 180px;
+    height: 250px;
   }
 }
 .priceChart .loading {
-  height: 200px;
+  height: 250px;
 }
 
 /*# sourceMappingURL=priceChart.css.map */

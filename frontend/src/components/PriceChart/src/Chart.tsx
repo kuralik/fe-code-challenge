@@ -7,7 +7,7 @@ const Chart = () => {
   const symbolInfo = useAppSelector(selectors.selectSymbolInfo);
 
   return (
-    <div className="priceChart__inner">
+    <>
       <div className="priceChart__company-name">{symbolInfo}</div>
 
       <ResponsiveContainer width="100%" height="100%">
@@ -17,7 +17,7 @@ const Chart = () => {
           <YAxis />
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </>
   );
 };
 

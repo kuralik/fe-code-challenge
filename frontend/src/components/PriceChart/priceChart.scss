@@ -1,12 +1,15 @@
+$height: 250px;
+
 .priceChart {
   width: 400px;
+  min-height: $height;
 
   &__title {
     text-transform: uppercase;
   }
 
   &__inner {
-    height: 300px;
+    height: $height;
     display: flex;
   }
 
@@ -14,11 +17,11 @@
     width: 100%;
 
     &__inner {
-      height: 180px;
+      height: $height;
     }
   }
 
   .loading {
-    height: 200px;
+    height: $height;
   }
 }
