@@ -9,11 +9,15 @@ type SymbolCardProps = {
   price: number;
 };
 
+const Icon = <CompanyIcon />;
+
 const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
   const { trend, companyName } = useAppSelector((state) => state.stocks.entities[id]);
+
   const handleOnClick = () => {
     onClick(id);
   };
+
   return (
     <div onClick={handleOnClick} className="symbolCard">
       <div>
@@ -21,7 +25,8 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
       </div>
       <div>Price:</div>
       <div>{price || '--'} </div>
-      <ListItem Icon={<CompanyIcon />} label={companyName} />
+
+      <ListItem Icon={Icon} label={companyName} />
     </div>
   );
 };
