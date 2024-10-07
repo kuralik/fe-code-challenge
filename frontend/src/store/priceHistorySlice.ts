@@ -17,6 +17,7 @@ type PriceHistoryState = {
   apiState: {
     loading: boolean | null;
     error: boolean;
+    success: boolean;
   };
 };
 
@@ -25,7 +26,8 @@ const initialState: PriceHistoryState = {
   history: [],
   apiState: {
     loading: null,
-    error: false
+    error: false,
+    success: false
   }
 };
 

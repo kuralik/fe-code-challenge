@@ -1,13 +1,23 @@
 .priceChart {
   width: 400px;
+}
+.priceChart__title {
+  text-transform: uppercase;
+}
+.priceChart__inner {
   height: 300px;
   display: flex;
 }
-
 @media (max-width: 1023px) {
   .priceChart {
-    max-height: 250px;
-    height: 180px;
     width: 100%;
   }
+  .priceChart__inner {
+    height: 180px;
+  }
 }
+.priceChart .loading {
+  height: 200px;
+}
+
+/*# sourceMappingURL=priceChart.css.map */

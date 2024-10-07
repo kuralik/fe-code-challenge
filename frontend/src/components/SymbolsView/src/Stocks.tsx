@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import './stocks.css';
 import SymbolsGrid from '@/components/SymbolsGrid';
 import PriceChart from '@/components/PriceChart';
@@ -6,15 +6,13 @@ import PriceChart from '@/components/PriceChart';
 const Stocks = () => {
   const [activeSymbol, setActiveSymbol] = useState<null | string>(null);
 
-  const handleSymbolClick = (symbolId: string) => {
+  const handleSymbolClick = useCallback((symbolId: string) => {
     setActiveSymbol((s) => (s === symbolId ? null : symbolId));
-  };
+  }, []);
 
   return (
     <div className="stocks">
       <div className="stocks__item stocks__item--secondary">
-        <h3>PRICE HISTORY</h3>
-
         <PriceChart symbolId={activeSymbol} />
       </div>
 
