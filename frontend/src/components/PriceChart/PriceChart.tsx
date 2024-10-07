@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '@/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { selectActiveSymbol } from '@/store/dashboardOptionsSlice';
 import { fetchPriceHistory } from '@/store/priceHistorySlice';
 import PriceChartInner from './src/PriceChartInner';
 import './priceChart.css';
 
-type PriceChartProps = {
-  symbolId: string | null;
-};
+const PriceChart = () => {
+  const symbolId = useAppSelector(selectActiveSymbol);
 
-const PriceChart = ({ symbolId }: PriceChartProps) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

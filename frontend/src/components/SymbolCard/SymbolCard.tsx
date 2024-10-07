@@ -1,26 +1,28 @@
 import { memo } from 'react';
-import './symbolCard.css';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ReactComponent as CompanyIcon } from '@/assets/company.svg';
-import { useAppSelector } from '@/hooks/redux';
+import { updateActiveSymbol } from '@/store/dashboardOptionsSlice';
 import ListItem from '@/components/ListItem';
+import './symbolCard.css';
 
 type SymbolCardProps = {
   id: string;
-  onClick: (symbolId: string) => void;
   price: number;
 };
 
 const Icon = <CompanyIcon />;
 
-const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
+const SymbolCard = ({ id, price }: SymbolCardProps) => {
   const { trend, companyName } = useAppSelector((state) => state.stocks.entities[id]);
 
-  const handleOnClick = () => {
-    onClick(id);
+  const dispatch = useAppDispatch();
+
+  const onClick = () => {
+    dispatch(updateActiveSymbol(id));
   };
 
   return (
-    <div onClick={handleOnClick} className="symbolCard">
+    <div onClick={onClick} className="symbolCard">
       <div>
         {id} - {trend}
       </div>
