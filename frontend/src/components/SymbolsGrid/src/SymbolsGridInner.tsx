@@ -9,11 +9,11 @@ const SymbolsGridInner = ({ stockSymbols }: SymbolsGridInnerProps) => {
   const prices = useAppSelector((state) => state.prices);
 
   return (
-    <div className="stocks__list">
+    <>
       {stockSymbols?.map((id) => (
         <SymbolCard key={id} id={id} price={prices[id]} />
       ))}
-    </div>
+    </>
   );
 };
 
