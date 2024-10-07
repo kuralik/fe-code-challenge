@@ -1,0 +1,29 @@
+$height: 700px;
+$item-secondary-width: 420px;
+
+.stocks {
+  height: $height;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+
+  &__item {
+    &--primary {
+      width: calc(100% - #{$item-secondary-width});
+      padding: 1rem;
+      overflow-y: scroll;
+      background: #e6e6e6;
+      border-radius: 5px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &--secondary {
+      width: $item-secondary-width;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+  }
+}

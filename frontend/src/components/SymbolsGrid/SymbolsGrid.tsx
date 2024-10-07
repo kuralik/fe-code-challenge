@@ -9,6 +9,7 @@ type SymbolsGridProps = {
 
 const SymbolsGrid = ({ onSymbolClick }: SymbolsGridProps) => {
   const stockSymbols = useAppSelector(selectors.selectStockIds);
+
   const prices = useAppSelector((state) => state.prices);
 
   const dispatch = useAppDispatch();

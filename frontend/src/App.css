@@ -79,9 +79,10 @@ select {
 }
 
 .App {
+  height: 100vh;
   padding: 12px 24px 0;
+  overflow: hidden;
   background-color: rgba(14, 17, 35, 0.02);
-  min-height: 100%;
 }
 
 @media (max-width: 767px) {
