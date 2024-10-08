@@ -21,9 +21,9 @@
   }
 }
 .stocks__item--primary {
-  padding: 1rem;
+  padding: 1.5rem 1.8rem 0;
   overflow-y: scroll;
-  background: #e6e6e6;
+  background: #e2e2e4;
   border-radius: 5px;
 }
 .stocks__item--primary::-webkit-scrollbar {
