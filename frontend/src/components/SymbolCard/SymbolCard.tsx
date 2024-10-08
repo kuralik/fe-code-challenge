@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { ReactComponent as CompanyIcon } from '@/assets/company.svg';
-import { updateActiveSymbol } from '@/store/dashboardOptionsSlice';
-import ListItem from '@/components/ListItem';
+import { selectActiveSymbol, updateActiveSymbol } from '@/store/dashboardOptionsSlice';
+import SymbolCardDescription from './src/SymbolCardDescription';
+import SymbolCardTrend from './src/SymbolCardTrend';
+import SymbolCardPrice from './src/SymbolCardPrice';
 import './symbolCard.css';
 
 type SymbolCardProps = {
@@ -10,10 +11,8 @@ type SymbolCardProps = {
   price: number;
 };
 
-const Icon = <CompanyIcon />;
-
 const SymbolCard = ({ id, price }: SymbolCardProps) => {
-  const { trend, companyName } = useAppSelector((state) => state.stocks.entities[id]);
+  const symbolId = useAppSelector(selectActiveSymbol);
 
   const dispatch = useAppDispatch();
 
@@ -22,15 +21,19 @@ const SymbolCard = ({ id, price }: SymbolCardProps) => {
   };
 
   return (
-    <div onClick={onClick} className="symbolCard">
-      <div>
-        {id} - {trend}
-      </div>
-      <div>Price:</div>
-      <div>{price || '--'} </div>
+    <article
+      onClick={onClick}
+      className={`symbolCard ${symbolId === id ? 'symbolCard--active' : ''}`}
+    >
+      <h3 className="symbolCard__title">{id}</h3>
 
-      <ListItem Icon={Icon} label={companyName} />
-    </div>
+      <SymbolCardPrice price={price} />
+
+      <SymbolCardDescription id={id} />
+
+      <SymbolCardTrend id={id} />
+    </article>
   );
 };
+
 export default memo(SymbolCard);
