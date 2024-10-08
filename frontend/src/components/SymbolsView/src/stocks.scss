@@ -5,6 +5,20 @@ $item-secondary-width: 420px;
   height: $height;
   margin: 1.5rem 0;
 
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: row-reverse;
+
+    &__item {
+      &--primary {
+        width: calc(100% - #{$item-secondary-width});
+      }
+      &--secondary {
+        width: $item-secondary-width;
+      }
+    }
+  }
+
   &__item {
     &--primary {
       padding: 1rem;
@@ -20,20 +34,6 @@ $item-secondary-width: 420px;
     &--secondary {
       padding: 0 1rem;
       box-sizing: border-box;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    display: flex;
-    flex-direction: row-reverse;
-
-    &__item {
-      &--primary {
-        width: calc(100% - #{$item-secondary-width});
-      }
-      &--secondary {
-        width: $item-secondary-width;
-      }
     }
   }
 }

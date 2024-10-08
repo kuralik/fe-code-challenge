@@ -14,7 +14,7 @@ const PriceChart = () => {
     if (symbolId) {
       dispatch(fetchPriceHistory(symbolId));
     }
-  }, [dispatch, symbolId]);
+  }, [symbolId]);
 
   return (
     <div className="priceChart">

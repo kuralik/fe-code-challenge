@@ -2,6 +2,18 @@
   height: 700px;
   margin: 1.5rem 0;
 }
+@media (min-width: 1024px) {
+  .stocks {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .stocks__item--primary {
+    width: calc(100% - 420px);
+  }
+  .stocks__item--secondary {
+    width: 420px;
+  }
+}
 .stocks__item--primary {
   padding: 1rem;
   overflow-y: scroll;
@@ -14,18 +26,6 @@
 .stocks__item--secondary {
   padding: 0 1rem;
   box-sizing: border-box;
-}
-@media (min-width: 1024px) {
-  .stocks {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .stocks__item--primary {
-    width: calc(100% - 420px);
-  }
-  .stocks__item--secondary {
-    width: 420px;
-  }
 }
 
 /*# sourceMappingURL=stocks.css.map */

@@ -20,13 +20,9 @@ const SymbolsGrid = () => {
     }
   }, [hasNoStockSymbols]);
 
-  const showCardInfo = useAppSelector((state) => state.store.showCardInfo);
+  const hasInfo = useAppSelector((state) => state.store.showCardInfo);
 
-  return (
-    <div className={`stocks__list ${showCardInfo ? '' : 'stocks__list--brief'}`}>
-      <SymbolsGridInner stockSymbols={stockSymbols} />
-    </div>
-  );
+  return <SymbolsGridInner {...{ stockSymbols, hasInfo }} />;
 };
 
 export default SymbolsGrid;
