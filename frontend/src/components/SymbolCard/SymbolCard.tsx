@@ -4,6 +4,8 @@ import { selectActiveSymbol, updateActiveSymbol } from '@/store/dashboardOptions
 import SymbolCardDescription from './src/SymbolCardDescription';
 import SymbolCardTrend from './src/SymbolCardTrend';
 import SymbolCardPrice from './src/SymbolCardPrice';
+import useTrend from './src/useTrend';
+import useShakeAnimation from './src/useShakeAnimation';
 import './symbolCard.css';
 
 type SymbolCardProps = {
@@ -12,18 +14,24 @@ type SymbolCardProps = {
 };
 
 const SymbolCard = ({ id, price }: SymbolCardProps) => {
-  const symbolId = useAppSelector(selectActiveSymbol);
-
   const dispatch = useAppDispatch();
 
   const onClick = () => {
     dispatch(updateActiveSymbol(id));
   };
 
+  const symbolId = useAppSelector(selectActiveSymbol);
+
+  const activeModifier = symbolId === id ? 'symbolCard--active' : '';
+
+  const { trendModifier } = useTrend(price);
+
+  const { shakeModifier } = useShakeAnimation(price);
+
   return (
     <article
       onClick={onClick}
-      className={`symbolCard ${symbolId === id ? 'symbolCard--active' : ''}`}
+      className={`symbolCard ${activeModifier} ${trendModifier} ${shakeModifier}`}
     >
       <h3 className="symbolCard__title">{id}</h3>
 

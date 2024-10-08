@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["stocks.scss"],"names":[],"mappings":"AAGA;EACE,QAJO;EAKP;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGF;EAZF;IAaI;;EAGE;IACE;;EAGF;IACE,OAvBe;;;AA6BnB;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA","file":"stocks.css"}
+{"version":3,"sourceRoot":"","sources":["stocks.scss"],"names":[],"mappings":"AAGA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGF;EAbF;IAcI;IACA;;EAGE;IACE;;EAGF;IACE,OAzBe;;;AA+BnB;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA","file":"stocks.css"}

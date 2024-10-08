@@ -5,6 +5,8 @@
   cursor: pointer;
   background: white;
   border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0 0 18px 3px transparent;
 }
 .symbolCard:last-child {
   margin-bottom: 0;
@@ -45,10 +47,19 @@
 }
 .symbolCard--active {
   transform: scale(1.05);
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.76);
+  box-shadow: 0 0 18px 3px rgba(0, 0, 0, 0.76);
 }
 .stocks__list--active .symbolCard:not(.symbolCard--active) {
   transform: scale(0.93);
+}
+.symbolCard--down {
+  box-shadow: 0 0 18px 3px #DE5050;
+}
+.symbolCard--up {
+  box-shadow: 0 0 18px 3px #74D950;
+}
+.symbolCard--animation--shake {
+  animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 .symbolCard__title {
   padding: 1px 10px;
@@ -89,10 +100,6 @@
 }
 .symbolCard__trend--down {
   background-image: url("../../assets/down.png");
-}
-
-.symbolCard__shake {
-  animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 @keyframes shake {

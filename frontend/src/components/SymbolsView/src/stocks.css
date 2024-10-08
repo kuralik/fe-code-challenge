@@ -1,6 +1,7 @@
 .stocks {
-  height: 700px;
+  height: calc(100% - 90px);
   margin: 1.5rem 0;
+  position: relative;
   display: flex;
   flex-direction: column-reverse;
 }
@@ -11,6 +12,7 @@
 }
 @media (min-width: 1024px) {
   .stocks {
+    height: calc(100% - 205px);
     flex-direction: row;
   }
   .stocks__item--primary {
