@@ -1,40 +1,87 @@
 .symbolCard {
-  margin: 10px;
+  margin: 10px 10px 20px;
+  padding: 0 0 5px;
   position: relative;
   background: white;
   border-radius: 4px;
 }
+.symbolCard:last-child {
+  margin-bottom: 0;
+}
+.stocks .symbolCard {
+  margin: 0 0 20px;
+  width: 100%;
+}
+@media (min-width: 460px) {
+  .stocks .symbolCard {
+    width: 48%;
+  }
+}
+@media (min-width: 800px) {
+  .stocks .symbolCard {
+    width: 32%;
+  }
+}
+@media (min-width: 1024px) {
+  .stocks .symbolCard {
+    width: 48%;
+  }
+}
+@media (min-width: 1200px) {
+  .stocks .symbolCard {
+    width: 32%;
+  }
+}
+@media (min-width: 1500px) {
+  .stocks .symbolCard {
+    width: 24%;
+  }
+}
 .symbolCard--active {
   border: solid 2px orange;
 }
+.stocks__list--active .symbolCard:not(.symbolCard--active) {
+  border: solid 2px pink;
+}
 .symbolCard__title {
-  padding: 3px 10px;
+  padding: 1px 10px;
   color: var(--colorWhite);
   font-weight: 600;
   background: var(--colorDark);
   border-radius: 4px 4px 0 0;
 }
 .symbolCard__price {
-  padding: 0 5px;
+  padding: 5px 8px 10px;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+.symbolCard__price strong {
+  font-size: 1.5rem;
+}
+.symbolCard__description {
+  padding: 0 5px;
 }
 .stocks__list--brief .symbolCard__description {
   display: none;
 }
 .symbolCard__trend {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 39px;
   position: absolute;
-  top: -15px;
-  right: -15px;
+  top: -16px;
+  right: -21px;
   z-index: 3;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .symbolCard__trend--up {
-  background-color: green;
+  background-image: url("../../assets/up.png");
 }
 .symbolCard__trend--down {
-  background-color: red;
+  background-image: url("../../assets/down.png");
 }
 
 .symbolCard__shake {

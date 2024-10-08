@@ -4,15 +4,23 @@ $item-secondary-width: 420px;
 .stocks {
   height: $height;
   margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
   @media (min-width: 1024px) {
-    display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
 
     &__item {
       &--primary {
         width: calc(100% - #{$item-secondary-width});
       }
+
       &--secondary {
         width: $item-secondary-width;
       }
