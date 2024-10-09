@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useShakeAnimation = (price: number) => {
+const useShakeAnimation = (price: number, shakeThreshold = 0.25, shakeDuration = 800) => {
   const prevPriceRef = useRef<number | null>(null);
 
   const [shakeModifier, setShakeModifier] = useState<string>('');
@@ -8,20 +8,22 @@ const useShakeAnimation = (price: number) => {
   useEffect(() => {
     const prevPrice = prevPriceRef.current;
 
-    const priceChange = prevPrice !== null ? Math.abs(price - prevPrice) : 0;
+    if (prevPrice !== null) {
+      const priceChange = Math.abs(price - prevPrice);
 
-    if (prevPrice !== null && priceChange >= prevPrice * 0.25) {
-      setShakeModifier('symbolCard--animation--shake');
+      if (priceChange >= prevPrice * shakeThreshold) {
+        setShakeModifier('symbolCard--animation--shake');
 
-      const shakeTimeout = setTimeout(() => {
-        setShakeModifier('');
-      }, 800);
+        const shakeTimeout = setTimeout(() => {
+          setShakeModifier('');
+        }, shakeDuration);
 
-      return () => clearTimeout(shakeTimeout);
+        return () => clearTimeout(shakeTimeout);
+      }
     }
 
     prevPriceRef.current = price;
-  }, [price]);
+  }, [price, shakeThreshold, shakeDuration]);
 
   return { shakeModifier };
 };
