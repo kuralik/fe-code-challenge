@@ -15,7 +15,7 @@ const useShakeAnimation = (price: number) => {
 
       const shakeTimeout = setTimeout(() => {
         setShakeModifier('');
-      }, 1000);
+      }, 800);
 
       return () => clearTimeout(shakeTimeout);
     }
