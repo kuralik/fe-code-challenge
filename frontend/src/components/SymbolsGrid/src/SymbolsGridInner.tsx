@@ -12,12 +12,11 @@ const SymbolsGridInner = ({ stockSymbols, hasInfo }: SymbolsGridInnerProps) => {
 
   const symbolId = useAppSelector(selectActiveSymbol);
 
+  const briefModifier = hasInfo ? '' : 'stocks__list--brief';
+  const activeModifier = symbolId ? 'stocks__list--active' : '';
+
   return (
-    <section
-      className={`stocks__list ${hasInfo ? '' : 'stocks__list--brief'} ${
-        symbolId ? 'stocks__list--active' : ''
-      }`}
-    >
+    <section className={`stocks__list ${briefModifier} ${activeModifier}`}>
       {stockSymbols.map((id) => (
         <SymbolCard key={id} id={id} price={prices[id]} />
       ))}
