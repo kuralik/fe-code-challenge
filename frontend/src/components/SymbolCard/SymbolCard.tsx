@@ -1,28 +1,47 @@
+import { memo } from 'react';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { selectActiveSymbol, updateActiveSymbol } from '@/store/dashboardOptionsSlice';
+import SymbolCardDescription from './src/SymbolCardDescription';
+import SymbolCardTrend from './src/SymbolCardTrend';
+import SymbolCardPrice from './src/SymbolCardPrice';
+import useTrend from './src/useTrend';
+import useShakeAnimation from './src/useShakeAnimation';
 import './symbolCard.css';
-import { ReactComponent as CompanyIcon } from '@/assets/company.svg';
-import { useAppSelector } from '@/hooks/redux';
-import ListItem from '@/components/ListItem';
 
 type SymbolCardProps = {
   id: string;
-  onClick: (symbolId: string) => void;
   price: number;
 };
 
-const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
-  const { trend, companyName } = useAppSelector((state) => state.stocks.entities[id]);
-  const handleOnClick = () => {
-    onClick(id);
+const SymbolCard = ({ id, price }: SymbolCardProps) => {
+  const dispatch = useAppDispatch();
+
+  const onClick = () => {
+    dispatch(updateActiveSymbol(id));
   };
+
+  const symbolId = useAppSelector(selectActiveSymbol);
+
+  const activeModifier = symbolId === id ? 'symbolCard--active' : '';
+
+  const { trendModifier } = useTrend(price);
+
+  const { shakeModifier } = useShakeAnimation(price);
+
   return (
-    <div onClick={handleOnClick} className="symbolCard">
-      <div>
-        {id} - {trend}
-      </div>
-      <div>Price:</div>
-      <div>{price || '--'} </div>
-      <ListItem Icon={<CompanyIcon />} label={companyName} />
-    </div>
+    <article
+      onClick={onClick}
+      className={`symbolCard ${activeModifier} ${trendModifier} ${shakeModifier}`}
+    >
+      <h3 className="symbolCard__title">{id}</h3>
+
+      <SymbolCardPrice price={price} />
+
+      <SymbolCardDescription id={id} />
+
+      <SymbolCardTrend id={id} />
+    </article>
   );
 };
-export default SymbolCard;
+
+export default memo(SymbolCard);

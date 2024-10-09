@@ -1,7 +1,7 @@
+import { memo } from 'react';
 import './desktopInfo.css';
 import HighlightSymbols from '@/components/HighlightedSymbols';
 import TopHeadlines from '@/components/TopHeadlines';
-import { memo } from 'react';
 
 const DesktopInfo = () => {
   return (

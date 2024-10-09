@@ -1,16 +1,30 @@
-import SymbolsView from '@/components/SymbolsView';
+import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import StatementsView from "@/components/StatementsView";
-import ProfileView from "@/components/ProfileView";
+import Loading from '@/components/Loading';
+
+const SymbolsViewPage = lazy(() => import('@/components/SymbolsView'));
+const ProfileViewPage = lazy(() => import('@/components/ProfileView'));
+const StatementsViewPage = lazy(() => import('@/components/StatementsView'));
+
+const routes = [
+  { path: '/', element: <SymbolsViewPage />, index: true },
+  { path: '/profile', element: <ProfileViewPage /> },
+  { path: '/statements', element: <StatementsViewPage /> }
+];
 
 const Router = () => {
   return (
-      <Routes>
-        <Route index element={<SymbolsView />} />
-        <Route index path="profile" element={<ProfileView />} />
-        <Route index path="statements" element={<StatementsView />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+    <Routes>
+      {routes.map(({ path, element, index }) => (
+        <Route
+          key={path}
+          path={path}
+          index={index}
+          element={<Suspense fallback={<Loading />}>{element}</Suspense>}
+        />
+      ))}
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 };
 

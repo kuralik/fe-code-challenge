@@ -1,0 +1,27 @@
+$height: 250px;
+
+.priceChart {
+  width: 400px;
+  min-height: $height;
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__inner {
+    height: $height;
+    display: flex;
+  }
+
+  @media (max-width: 1023px) {
+    width: 100%;
+
+    &__inner {
+      height: $height;
+    }
+  }
+
+  .loading {
+    height: $height;
+  }
+}
