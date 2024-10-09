@@ -1,8 +1,9 @@
-$height: calc(100% - 205px);
+$header-height-mobile: 90px;
+$header-height-desktop: 205px;
 $item-secondary-width: 420px;
 
 .stocks {
-  height: calc(100% - 90px);
+  height: calc(100% - $header-height-mobile);
   margin: 1.5rem 0;
   position: relative;
   display: flex;
@@ -11,11 +12,16 @@ $item-secondary-width: 420px;
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+  }
+
+  &__item {
+    &--secondary {
+      margin-bottom: 1rem;
+    }
   }
 
   @media (min-width: 1024px) {
-    height: calc(100% - 205px);
+    height: calc(100% - $header-height-desktop);
     flex-direction: row;
 
     &__item {

@@ -8,7 +8,9 @@
 .stocks__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+.stocks__item--secondary {
+  margin-bottom: 1rem;
 }
 @media (min-width: 1024px) {
   .stocks {
